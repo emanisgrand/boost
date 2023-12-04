@@ -1,23 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://bkttev4si4olo"]
+[gd_scene load_steps=7 format=3 uid="uid://bkttev4si4olo"]
 
 [ext_resource type="Script" path="res://Level/LandingPad.gd" id="1_nkr3g"]
 [ext_resource type="PackedScene" uid="uid://c364f7i7wkuqb" path="res://player.tscn" id="2_omeij"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ptipa"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_n5g0b"]
-sky_material = SubResource("ProceduralSkyMaterial_ptipa")
-
-[sub_resource type="Environment" id="Environment_b5lpi"]
-background_mode = 2
-sky = SubResource("Sky_n5g0b")
-tonemap_mode = 2
-glow_enabled = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i806"]
-albedo_color = Color(0.54902, 0.337255, 0.0235294, 1)
+[ext_resource type="PackedScene" uid="uid://cpsj83xa0ps6n" path="res://Background1.tscn" id="3_b60vt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqooe"]
 albedo_color = Color(1, 0.537255, 0.992157, 1)
@@ -29,19 +14,6 @@ albedo_color = Color(0.109804, 0.105882, 1, 1)
 albedo_color = Color(0, 0.92549, 0.00392157, 1)
 
 [node name="Level" type="Node3D"]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_b5lpi")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
-shadow_enabled = true
-
-[node name="Platform" type="CSGBox3D" parent="." groups=["Hazard"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
-use_collision = true
-size = Vector3(30, 4, 4)
-material = SubResource("StandardMaterial3D_1i806")
 
 [node name="Obstacle1" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(0.0988836, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 3.31716, 0)
@@ -72,3 +44,5 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 linear_damp = 1.0
 angular_damp = 3.0
+
+[node name="Floor" parent="." instance=ExtResource("3_b60vt")]
