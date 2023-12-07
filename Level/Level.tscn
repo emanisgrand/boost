@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcnxvfpoo0jqp"]
+[gd_scene load_steps=7 format=3 uid="uid://di87mirdi7i01"]
 
-[ext_resource type="PackedScene" uid="uid://cpsj83xa0ps6n" path="res://Background1.tscn" id="1_fiv7f"]
-[ext_resource type="PackedScene" uid="uid://c364f7i7wkuqb" path="res://player.tscn" id="1_lne08"]
+[ext_resource type="PackedScene" path="res://Background1.tscn" id="1_fiv7f"]
+[ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="1_lne08"]
 [ext_resource type="Script" path="res://Level/LandingPad.gd" id="1_otr5a"]
+[ext_resource type="PackedScene" uid="uid://d0fcr2t37ngk2" path="res://Static 3D Models/alien.tscn" id="4_gqrwm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqcb"]
 albedo_color = Color(0.109804, 0.105882, 1, 1)
@@ -37,3 +38,6 @@ linear_damp = 1.0
 angular_damp = 3.0
 
 [node name="Floor" parent="." instance=ExtResource("1_fiv7f")]
+
+[node name="Alien" parent="." instance=ExtResource("4_gqrwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90902, 6.0336, 0.696986)
