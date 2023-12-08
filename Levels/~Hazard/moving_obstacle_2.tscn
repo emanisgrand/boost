@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8an7mbupbyik"]
+
+[ext_resource type="Script" path="res://moving_hazard.gd" id="1_w731e"]
+
+[node name="Obstacle2" type="AnimatableBody3D" groups=["Hazard"]]
+transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, 1, 5.35894, 0)
+script = ExtResource("1_w731e")
+destination = Vector3(-4, 0, 0)
+duration = 1.98

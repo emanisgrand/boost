@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://cyyidww5soodw"]
+[gd_scene load_steps=7 format=3 uid="uid://bkttev4si4olo"]
 
-[ext_resource type="Script" path="res://Level/LandingPad.gd" id="1_0ebwi"]
-[ext_resource type="PackedScene" uid="uid://c364f7i7wkuqb" path="res://player.tscn" id="2_dqb6i"]
-[ext_resource type="PackedScene" uid="uid://cpsj83xa0ps6n" path="res://Background1.tscn" id="3_rq7aa"]
+[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_nkr3g"]
+[ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_omeij"]
+[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Background1.tscn" id="3_b60vt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqooe"]
 albedo_color = Color(1, 0.537255, 0.992157, 1)
@@ -16,13 +16,7 @@ albedo_color = Color(0, 0.92549, 0.00392157, 1)
 [node name="Level" type="Node3D"]
 
 [node name="Obstacle1" type="CSGBox3D" parent="." groups=["Hazard"]]
-transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 3.31716, 0)
-use_collision = true
-size = Vector3(30, 4, 4)
-material = SubResource("StandardMaterial3D_sqooe")
-
-[node name="Obstacle2" type="CSGBox3D" parent="." groups=["Hazard"]]
-transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 10.3172, 0)
+transform = Transform3D(0.0988836, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 3.31716, 0)
 use_collision = true
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_sqooe")
@@ -38,18 +32,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
 use_collision = true
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
-script = ExtResource("1_0ebwi")
-file_path = "res://Level/Level_4.tscn"
+script = ExtResource("1_nkr3g")
+file_path = "res://Level/Level_3.tscn"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
-[node name="Player" parent="." instance=ExtResource("2_dqb6i")]
+[node name="Player" parent="." instance=ExtResource("2_omeij")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.67365, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 linear_damp = 1.0
 angular_damp = 3.0
-thrust = 750.0
 
-[node name="Floor" parent="." instance=ExtResource("3_rq7aa")]
+[node name="Floor" parent="." instance=ExtResource("3_b60vt")]

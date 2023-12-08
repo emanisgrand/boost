@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://di87mirdi7i01"]
 
-[ext_resource type="PackedScene" path="res://Background1.tscn" id="1_fiv7f"]
+[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Background1.tscn" id="1_fiv7f"]
 [ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="1_lne08"]
-[ext_resource type="Script" path="res://Level/LandingPad.gd" id="1_otr5a"]
+[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_otr5a"]
 [ext_resource type="PackedScene" uid="uid://d0fcr2t37ngk2" path="res://Static 3D Models/alien.tscn" id="4_gqrwm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqcb"]
@@ -25,7 +25,7 @@ use_collision = true
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
 script = ExtResource("1_otr5a")
-file_path = "res://Level/Level_2.tscn"
+file_path = "res://Levels/Level_2.tscn"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
