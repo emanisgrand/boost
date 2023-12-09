@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_0ebwi"]
 [ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_dqb6i"]
-[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Background1.tscn" id="3_rq7aa"]
+[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="3_rq7aa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqooe"]
 albedo_color = Color(1, 0.537255, 0.992157, 1)
@@ -39,7 +39,7 @@ use_collision = true
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
 script = ExtResource("1_0ebwi")
-file_path = "res://Level/Level_4.tscn"
+file_path = "res://Levels/Level_4.tscn"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)

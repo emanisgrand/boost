@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://fv0ro0fpl1x0"]
 
-[ext_resource type="PackedScene" uid="uid://8we3uexo4fvp" path="res://Levels/~Hazard/moving_hazard.tscn" id="1_671ia"]
-[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_uihiy"]
-[ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_np1hl"]
-[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Background1.tscn" id="4_4y7rq"]
+[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_0ebwi"]
+[ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_dqb6i"]
+[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="3_rq7aa"]
+[ext_resource type="PackedScene" uid="uid://8we3uexo4fvp" path="res://Levels/~Hazard/moving_hazard.tscn" id="4_nra85"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqcb"]
 albedo_color = Color(0.109804, 0.105882, 1, 1)
@@ -13,7 +13,7 @@ albedo_color = Color(0, 0.92549, 0.00392157, 1)
 
 [node name="Level" type="Node3D"]
 
-[node name="MovingHazard" parent="." instance=ExtResource("1_671ia")]
+[node name="MovingHazard" parent="." instance=ExtResource("4_nra85")]
 destination = Vector3(0, 2.985, 0)
 duration = 3.615
 
@@ -28,17 +28,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
 use_collision = true
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
-script = ExtResource("1_uihiy")
-file_path = "res://Level/Level_5.tscn"
+script = ExtResource("1_0ebwi")
+file_path = "res://Levels/Level_5.tscn"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
-[node name="Player" parent="." instance=ExtResource("2_np1hl")]
+[node name="Player" parent="." instance=ExtResource("2_dqb6i")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.67365, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 linear_damp = 1.0
 angular_damp = 3.0
 
-[node name="Floor" parent="." instance=ExtResource("4_4y7rq")]
+[node name="Floor" parent="." instance=ExtResource("3_rq7aa")]

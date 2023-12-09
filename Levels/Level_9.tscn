@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://1oq4bfgx8udk"]
+[gd_scene load_steps=11 format=3 uid="uid://clr46athfqtkb"]
 
-[ext_resource type="Script" path="res://moving_hazard.gd" id="1_c3u8g"]
-[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_fgiol"]
-[ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_ep4hh"]
-[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="4_ojvbf"]
+[ext_resource type="Script" path="res://moving_hazard.gd" id="1_jdlbc"]
+[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="2_bblyl"]
+[ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="3_l64ls"]
+[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="4_yncuv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sqooe"]
 albedo_color = Color(1, 0.537255, 0.992157, 1)
@@ -24,15 +24,15 @@ albedo_color = Color(0, 0.92549, 0.00392157, 1)
 [node name="Level" type="Node3D"]
 
 [node name="Obstacle1" type="CSGBox3D" parent="." groups=["Hazard"]]
-transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 3.31716, 0)
+transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, -3, 3, 0)
 use_collision = true
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_sqooe")
 
 [node name="Obstacle2" type="AnimatableBody3D" parent="." groups=["Hazard"]]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 10.3172, 0)
-script = ExtResource("1_c3u8g")
-destination = Vector3(0, -4, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -3, 10, 0)
+script = ExtResource("1_jdlbc")
+destination = Vector3(9, -4, 0)
 duration = 1.85
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle2"]
@@ -42,8 +42,33 @@ shape = SubResource("BoxShape3D_o0mwi")
 material_override = SubResource("StandardMaterial3D_di8m2")
 mesh = SubResource("BoxMesh_wo38w")
 
+[node name="Obstacle3" type="CSGBox3D" parent="." groups=["Hazard"]]
+transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, 5, 10, 0)
+use_collision = true
+size = Vector3(30, 4, 4)
+material = SubResource("StandardMaterial3D_sqooe")
+
+[node name="Obstacle4" type="AnimatableBody3D" parent="." groups=["Hazard"]]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 5, 3, 0)
+script = ExtResource("1_jdlbc")
+destination = Vector3(0, 4, 0)
+duration = 1.85
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Obstacle4"]
+shape = SubResource("BoxShape3D_o0mwi")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Obstacle4"]
+material_override = SubResource("StandardMaterial3D_di8m2")
+mesh = SubResource("BoxMesh_wo38w")
+
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
+use_collision = true
+size = Vector3(2, 0.2, 2)
+material = SubResource("StandardMaterial3D_plqcb")
+
+[node name="LaunchPad2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.5, 0)
 use_collision = true
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_plqcb")
@@ -53,18 +78,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
 use_collision = true
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
-script = ExtResource("1_fgiol")
-file_path = "res://Levels/Level_6.tscn"
+script = ExtResource("2_bblyl")
+file_path = "res://Levels/Level_10.tscn"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
-[node name="Player" parent="." instance=ExtResource("2_ep4hh")]
+[node name="Player" parent="." instance=ExtResource("3_l64ls")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.67365, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 linear_damp = 1.0
 angular_damp = 3.0
-thrust = 750.0
+thrust = 1514.28
 
-[node name="Floor" parent="." instance=ExtResource("4_ojvbf")]
+[node name="Floor" parent="." instance=ExtResource("4_yncuv")]
