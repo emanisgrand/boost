@@ -1,0 +1,86 @@
+[gd_scene load_steps=10 format=3 uid="uid://cgubt6tqwcsub"]
+
+[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_vw7l8"]
+[ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_kbgam"]
+[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="3_oxcsy"]
+[ext_resource type="PackedScene" uid="uid://d0fcr2t37ngk2" path="res://Static 3D Models/alien.tscn" id="4_6brgh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqcb"]
+albedo_color = Color(0.109804, 0.105882, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qubg4"]
+albedo_color = Color(0, 0.92549, 0.00392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_skunp"]
+font_size = 60
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15mvn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqwt3"]
+
+[node name="Level" type="Node3D"]
+
+[node name="LaunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
+use_collision = true
+size = Vector3(2, 0.2, 2)
+material = SubResource("StandardMaterial3D_plqcb")
+
+[node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
+use_collision = true
+size = Vector3(2, 0.2, 2)
+material = SubResource("StandardMaterial3D_qubg4")
+script = ExtResource("1_vw7l8")
+file_path = "res://Levels/Level_2.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
+
+[node name="Player" parent="." instance=ExtResource("2_kbgam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.67365, 0)
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+linear_damp = 1.0
+angular_damp = 3.0
+
+[node name="Floor" parent="." instance=ExtResource("3_oxcsy")]
+
+[node name="Alien" parent="." instance=ExtResource("4_6brgh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90902, 6.0336, 0.696986)
+
+[node name="TitleScreen" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="TitleScreen/VBoxContainer"]
+layout_mode = 2
+text = "HYDROGEN HALOS❄️"
+label_settings = SubResource("LabelSettings_skunp")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="TitleScreen/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_15mvn")
+text = "START"
+
+[node name="Button2" type="Button" parent="TitleScreen/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_kqwt3")
+text = "QUIT"
