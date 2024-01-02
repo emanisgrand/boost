@@ -1,49 +1,21 @@
-[gd_scene load_steps=19 format=3 uid="uid://5jj5eaf8fup4"]
+[gd_scene load_steps=10 format=3 uid="uid://5jj5eaf8fup4"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_xx6mv"]
 [ext_resource type="AudioStream" uid="uid://dv12ksxj60e1j" path="res://Audio/SFX - Death Explosion.ogg" id="2_7tqw6"]
 [ext_resource type="AudioStream" uid="uid://dgee6mv2yaey8" path="res://Audio/SFX - Success.ogg" id="3_ysejb"]
 [ext_resource type="AudioStream" uid="uid://dils7d3kbf01m" path="res://Audio/SFX - Main engine thrust.ogg" id="4_2s7fe"]
 [ext_resource type="PackedScene" uid="uid://ux6ivcx1ovdp" path="res://booster_particles.tscn" id="5_6hdmk"]
+[ext_resource type="PackedScene" uid="uid://cgfjl41vbtdwm" path="res://Character/character_exported.tscn" id="5_htwgn"]
 [ext_resource type="PackedScene" uid="uid://dcecb8hw7dbrv" path="res://explosion_particles.tscn" id="6_3p01v"]
 [ext_resource type="PackedScene" uid="uid://jfwajmrh6ca7" path="res://success_particles.tscn" id="7_b8rrf"]
-[ext_resource type="Material" uid="uid://cbfudsf504vrr" path="res://material_color_teal.tres" id="8_2i3uw"]
-[ext_resource type="Material" uid="uid://bty8b5tasohj" path="res://material_color_white.tres" id="8_gxgho"]
-[ext_resource type="Material" uid="uid://crrtmytbfy0gi" path="res://material_color_dark_purple.tres" id="9_8ajqh"]
-[ext_resource type="Material" uid="uid://dh6ii75arfeu1" path="res://material_color_yellow.tres" id="10_rlfvb"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_mnpjg"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_3qxql"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_iyfv0"]
-radius = 0.23
-height = 0.765
-
-[sub_resource type="SphereMesh" id="SphereMesh_5meku"]
-radius = 0.14
-height = 0.31
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_1gkej"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_lig5p"]
-top_radius = 0.095
-bottom_radius = 0.04
-height = 0.655
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_y0ro2"]
-top_radius = 0.098
-bottom_radius = 0.045
-height = 0.956
-
 [node name="Player" type="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 max_contacts_reported = 10
 contact_monitor = true
 script = ExtResource("1_xx6mv")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CylinderMesh_mnpjg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CylinderShape3D_3qxql")
@@ -60,62 +32,60 @@ stream = ExtResource("3_ysejb")
 [node name="RocketAudio" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("4_2s7fe")
 
-[node name="BoosterParticles" parent="." instance=ExtResource("5_6hdmk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="Character" parent="." instance=ExtResource("5_htwgn")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
 
-[node name="ExplosionParticles" parent="." instance=ExtResource("6_3p01v")]
+[node name="Skeleton3D" parent="Character/Root" index="0"]
+bones/0/position = Vector3(0.302855, 0.193205, -0.14881)
+bones/9/position = Vector3(-0.302373, 0.193205, -0.14881)
+bones/18/position = Vector3(-0.000223409, 1.56417, 0.0312403)
+bones/18/rotation = Quaternion(9.30153e-05, -6.39397e-09, 0.999999, -0.00144307)
+bones/20/rotation = Quaternion(-0.0610426, -1.0919e-08, -1.03379e-08, 0.998135)
+bones/23/rotation = Quaternion(0.0766158, 5.10965e-10, 5.33664e-11, 0.997061)
+bones/24/rotation = Quaternion(-0.0741353, -4.58966e-10, -2.56488e-11, 0.997248)
+bones/26/rotation = Quaternion(0.586882, 0.410653, 0.548295, -0.431632)
+bones/27/rotation = Quaternion(0.08389, 0.710813, 0.0613101, 0.695664)
+bones/28/rotation = Quaternion(0.0467615, 0.0125739, 0.00544681, 0.998812)
+bones/29/rotation = Quaternion(-0.0265466, 0.724739, -0.0213085, 0.688182)
+bones/30/rotation = Quaternion(0.0567275, -0.0774652, 0.000148623, 0.99538)
+bones/31/rotation = Quaternion(0.0813734, 0.0669227, -0.000639116, 0.994434)
+bones/32/rotation = Quaternion(0.0309713, -0.0305239, 0.000892135, 0.999054)
+bones/34/rotation = Quaternion(-0.336073, 0.630712, 0.446928, 0.538064)
+bones/35/rotation = Quaternion(0.201199, -0.0134891, 0.00392888, 0.97945)
+bones/37/rotation = Quaternion(0.658379, -0.507611, 0.459994, 0.311887)
+bones/38/rotation = Quaternion(-0.000935274, 0.964877, -0.103902, -0.241281)
+bones/39/rotation = Quaternion(0.00073378, -0.00476747, 0.0470719, 0.99888)
+bones/40/rotation = Quaternion(0.00820637, 0.000330768, -0.0330372, 0.99942)
+bones/41/rotation = Quaternion(-0.0567295, -0.0774615, -0.000148231, 0.99538)
+bones/42/rotation = Quaternion(-0.0813715, 0.0669202, 0.000639281, 0.994434)
+bones/43/rotation = Quaternion(-0.0309754, -0.0305215, -0.000892204, 0.999054)
+bones/45/rotation = Quaternion(-0.358374, 0.729597, -0.429253, -0.393699)
+bones/46/rotation = Quaternion(-0.190904, -0.0256769, 0.0636607, 0.979206)
+bones/48/rotation = Quaternion(0.997211, 0.0694032, -0.0210528, -0.0175984)
+bones/48/scale = Vector3(1, 1, 1)
+bones/49/rotation = Quaternion(0.114217, 0.0325762, 0.0426413, 0.992006)
+bones/50/rotation = Quaternion(-0.554441, -0.0467145, -0.060194, 0.828728)
+bones/50/scale = Vector3(1, 1, 1)
+bones/53/rotation = Quaternion(0.997152, -0.0685442, -0.0237079, -0.0206942)
+bones/53/scale = Vector3(1.00002, 1, 1)
+bones/54/rotation = Quaternion(0.112169, 0.0115569, -0.0477685, 0.992473)
+bones/55/rotation = Quaternion(-0.556114, 0.0745019, 0.042005, 0.826693)
 
-[node name="SuccessParticles" parent="." instance=ExtResource("7_b8rrf")]
+[node name="LeftBoosterParticles" parent="Character" instance=ExtResource("5_6hdmk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 1.63664, 2.03676, 0)
 
-[node name="Torso" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0349624, 0.353247, 0.00825179)
-material_override = ExtResource("8_2i3uw")
-mesh = SubResource("CapsuleMesh_iyfv0")
+[node name="RightBoosterParticles" parent="Character" instance=ExtResource("5_6hdmk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.62482, 2.07954, 0)
 
-[node name="Head" type="MeshInstance3D" parent="Torso"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0202815, 0.508639, 0)
-mesh = SubResource("SphereMesh_5meku")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("8_gxgho")
+[node name="BoosterParticles" parent="Character" instance=ExtResource("5_6hdmk")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.0387003, 0)
 
-[node name="r_shoulder" type="MeshInstance3D" parent="Torso"]
-transform = Transform3D(-0.17238, -0.057066, 0, 0.057066, -0.17238, 0, 0, 0, 0.18158, -0.320699, 0.132014, -0.00909173)
-mesh = SubResource("CylinderMesh_1gkej")
-surface_material_override/0 = ExtResource("9_8ajqh")
+[node name="ExplosionParticles" parent="Character" instance=ExtResource("6_3p01v")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -2, 0)
 
-[node name="r_arm" type="MeshInstance3D" parent="Torso/r_shoulder"]
-transform = Transform3D(-3.99315, -0.634239, 0, 0.634239, -3.99315, 0, 0, 0, 4.0432, 0.263894, 2.23901, 0.0500701)
-mesh = SubResource("CylinderMesh_lig5p")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("10_rlfvb")
-
-[node name="LeftBoosterParticles" parent="Torso/r_shoulder/r_arm" instance=ExtResource("5_6hdmk")]
-transform = Transform3D(-1.34348, -0.17223, 0.143844, -0.151322, 1.34009, 0.191216, -0.165698, 0.172622, -1.34091, 0.0121991, -0.388093, 2.53709e-09)
-
-[node name="l_shoulder" type="MeshInstance3D" parent="Torso"]
-transform = Transform3D(-0.175233, 0.04759, 0, -0.04759, -0.175233, 0, 0, 0, 0.18158, 0.284979, 0.148807, -0.00909173)
-material_override = ExtResource("9_8ajqh")
-mesh = SubResource("CylinderMesh_1gkej")
-
-[node name="l_arm" type="MeshInstance3D" parent="Torso/l_shoulder"]
-transform = Transform3D(-4.02193, 0.414208, 0, -0.414208, -4.02193, 0, 0, 0, 4.04321, -0.364465, 2.20776, -0.000699185)
-material_override = ExtResource("10_rlfvb")
-mesh = SubResource("CylinderMesh_lig5p")
-skeleton = NodePath("../..")
-
-[node name="RightBoosterParticles" parent="Torso/l_shoulder/l_arm" instance=ExtResource("5_6hdmk")]
-transform = Transform3D(1.34397, -0.125775, -0.182268, 0.146918, 1.34524, 0.155025, 0.165698, -0.172622, 1.34091, 0.0303685, -0.362788, 0.00928859)
-
-[node name="RightLeg" type="MeshInstance3D" parent="Torso"]
-transform = Transform3D(0.998672, -0.0515168, 0, 0.0515168, 0.998672, 0, 0, 0, 1, -0.0979385, -0.765973, 0)
-material_override = ExtResource("9_8ajqh")
-mesh = SubResource("CylinderMesh_y0ro2")
-skeleton = NodePath("../..")
-
-[node name="LeftLeg" type="MeshInstance3D" parent="Torso"]
-transform = Transform3D(0.996911, 0.0785461, 0, -0.0785461, 0.996911, 0, 0, 0, 1, 0.0583729, -0.774671, 0)
-material_override = ExtResource("9_8ajqh")
-mesh = SubResource("CylinderMesh_y0ro2")
-skeleton = NodePath("../..")
+[node name="SuccessParticles" parent="Character" instance=ExtResource("7_b8rrf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -2, 0)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+
+[editable path="Character"]

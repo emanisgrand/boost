@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgubt6tqwcsub"]
+[gd_scene load_steps=11 format=3 uid="uid://cgubt6tqwcsub"]
 
 [ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_vw7l8"]
 [ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_kbgam"]
 [ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="3_oxcsy"]
 [ext_resource type="PackedScene" uid="uid://d0fcr2t37ngk2" path="res://Static 3D Models/alien.tscn" id="4_6brgh"]
+[ext_resource type="Script" path="res://Levels/TitleScreen.gd" id="5_xido3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqcb"]
 albedo_color = Color(0.109804, 0.105882, 1, 1)
@@ -59,6 +60,7 @@ theme_override_constants/margin_left = 300
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
+script = ExtResource("5_xido3")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen"]
 layout_mode = 2
@@ -84,3 +86,6 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_kqwt3")
 text = "QUIT"
+
+[connection signal="button_down" from="TitleScreen/VBoxContainer/VBoxContainer/Button" to="TitleScreen" method="_on_button_button_down"]
+[connection signal="button_down" from="TitleScreen/VBoxContainer/VBoxContainer/Button2" to="TitleScreen" method="_on_button_2_button_down"]

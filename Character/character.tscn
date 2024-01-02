@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0erdrxa44fd3"]
+
+[ext_resource type="PackedScene" uid="uid://cxx0gsqevxm42" path="res://Imports/Character.glb" id="1_e8gs8"]
+[ext_resource type="Texture2D" uid="uid://cu52oq6f212md" path="res://Imports/cyborgFemaleA.png" id="2_rlfx2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhytd"]
+albedo_texture = ExtResource("2_rlfx2")
+
+[node name="Character" instance=ExtResource("1_e8gs8")]
+
+[node name="characterMedium" parent="Root/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_xhytd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
+root_node = NodePath("../Root/Skeleton3D")
