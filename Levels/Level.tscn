@@ -16,12 +16,16 @@ albedo_color = Color(0, 0.92549, 0.00392157, 1)
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
 use_collision = true
+collision_layer = 3
+collision_mask = 0
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_plqcb")
 
 [node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
 use_collision = true
+collision_layer = 3
+collision_mask = 0
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
 script = ExtResource("1_otr5a")
@@ -31,13 +35,15 @@ file_path = "res://Levels/Level_2.tscn"
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
 [node name="Player" parent="." instance=ExtResource("1_lne08")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.67365, 0)
-axis_lock_angular_x = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.31607, -0.0474221)
+collision_mask = 2
+axis_lock_linear_z = true
 axis_lock_angular_y = true
-linear_damp = 1.0
-angular_damp = 3.0
 
 [node name="Floor" parent="." instance=ExtResource("1_fiv7f")]
+layers = 3
+collision_layer = 3
+collision_mask = 0
 
 [node name="Alien" parent="." instance=ExtResource("4_gqrwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90902, 6.0336, 0.696986)
