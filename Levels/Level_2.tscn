@@ -18,6 +18,7 @@ albedo_color = Color(0, 0.92549, 0.00392157, 1)
 [node name="Obstacle1" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(0.0988836, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 3.31716, 0)
 use_collision = true
+collision_layer = 3
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_sqooe")
 
@@ -43,10 +44,7 @@ file_path = "res://Levels/Level_3.tscn"
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
 [node name="Player" parent="." instance=ExtResource("2_omeij")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2.10363, 0)
-axis_lock_linear_z = true
-axis_lock_angular_x = true
-axis_lock_angular_y = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.37581, 0)
 linear_damp = 1.0
 angular_damp = 3.0
 

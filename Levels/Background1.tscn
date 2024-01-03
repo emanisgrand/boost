@@ -21,6 +21,7 @@ glow_enabled = true
 [node name="Floor" type="CSGBox3D" groups=["Hazard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 use_collision = true
+collision_mask = 3
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_1i806")
 

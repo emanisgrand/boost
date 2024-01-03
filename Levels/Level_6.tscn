@@ -19,18 +19,21 @@ albedo_color = Color(0.109804, 0.105882, 1, 1)
 [node name="Obstacle1" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, -9, 9.25305, 0)
 use_collision = true
+collision_layer = 3
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_sqooe")
 
 [node name="Obstacle3" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, 6, 2.25305, 0)
 use_collision = true
+collision_layer = 3
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_sqooe")
 
 [node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
 transform = Transform3D(-4.37114e-08, -1, 0, 0.999999, -4.37114e-08, 0, 0, 0, 1, 0.346873, 10.3, 4.65661e-10)
 use_collision = true
+collision_layer = 3
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
 script = ExtResource("2_cuy70")
@@ -43,12 +46,14 @@ light_energy = 2.171
 [node name="Obstacle4" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, 2, 10.3589, 0)
 use_collision = true
+collision_layer = 3
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_sqooe")
 
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
 use_collision = true
+collision_layer = 3
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_plqcb")
 
@@ -56,7 +61,7 @@ material = SubResource("StandardMaterial3D_plqcb")
 transform = Transform3D(0.986286, 0.0454933, -0.158654, 0, 0.961262, 0.275637, 0.165048, -0.271857, 0.948079, -3.52, 9.215, 8.105)
 
 [node name="Player" parent="." instance=ExtResource("3_rj77d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.67365, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.27738, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 linear_damp = 1.0
@@ -67,5 +72,6 @@ thrust = 750.0
 
 [node name="MovingHazard" parent="." instance=ExtResource("1_qqrsr")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1.03519, 6, -0.00379181)
+collision_layer = 3
 destination = Vector3(-7, 0, 0)
 duration = 2.5

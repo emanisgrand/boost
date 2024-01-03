@@ -1,0 +1,88 @@
+[gd_scene load_steps=8 format=3 uid="uid://cpxiomgpe1wcm"]
+
+[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_b8dtr"]
+[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="3_rik2i"]
+[ext_resource type="PackedScene" uid="uid://d0fcr2t37ngk2" path="res://Static 3D Models/alien.tscn" id="4_2a5i0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqcb"]
+albedo_color = Color(0.109804, 0.105882, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qubg4"]
+albedo_color = Color(0, 0.92549, 0.00392157, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtmca"]
+font_size = 46
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_1x068"]
+default_font_size = 25
+
+[node name="Level" type="Node3D"]
+
+[node name="LaunchPad" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
+layers = 3
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(2, 0.2, 2)
+material = SubResource("StandardMaterial3D_plqcb")
+
+[node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+size = Vector3(2, 0.2, 2)
+material = SubResource("StandardMaterial3D_qubg4")
+script = ExtResource("1_b8dtr")
+file_path = "res://Levels/Level_2.tscn"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
+
+[node name="Floor" parent="." instance=ExtResource("3_rik2i")]
+layers = 3
+collision_layer = 3
+collision_mask = 0
+
+[node name="Alien" parent="." instance=ExtResource("4_2a5i0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90902, 6.0336, 0.696986)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 540
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 96
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Hydrogen Halos ❄️"
+label_settings = SubResource("LabelSettings_vtmca")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Start Button" type="MenuButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1x068")
+toggle_mode = false
+text = "START"
+
+[node name="Quit Button" type="MenuButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_1x068")
+toggle_mode = false
+text = "QUIT"
+switch_on_hover = true
