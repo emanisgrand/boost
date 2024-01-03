@@ -9,23 +9,22 @@ var is_transitioning:bool = false
 @onready var success_audio: AudioStreamPlayer = $SuccessAudio
 @onready var rocket_audio: AudioStreamPlayer3D = $RocketAudio
 
-@onready var animation_tree = $Character/AnimationTree
-@onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+#@onready var animation_tree: AnimationTree = $AnimationTree
+#@onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 
-@onready var right_booster_particles:GPUParticles3D = $Character/RightBoosterParticles
-@onready var left_booster_particles:GPUParticles3D = $Character/LeftBoosterParticles
+@onready var right_booster_particles: GPUParticles3D = $"Character/Root/Skeleton3D/Physical Bone RightHand/RightBoosterParticles"
+@onready var left_booster_particles: GPUParticles3D = $"Character/Root/Skeleton3D/Physical Bone LeftHand/LeftBoosterParticles"
+
 @onready var explosion_particles:GPUParticles3D = $Character/ExplosionParticles
 @onready var booster_particles:GPUParticles3D = $Character/BoosterParticles
 @onready var success_particles:GPUParticles3D = $Character/SuccessParticles
-
-func _ready():
-	playback.travel("Idle")
+@onready var skeleton_3d: Skeleton3D = $Character/Root/Skeleton3D
 
 func _process(delta):
 	if Input.is_action_pressed("boost"):
 		apply_central_force(basis.y * delta * thrust)
 		booster_particles.emitting = true
-		playback.travel("Flying")
+		#playback.travel("Flying")
 		if rocket_audio.playing == false:
 			rocket_audio.play()
 	else:
@@ -56,7 +55,7 @@ func _on_body_entered(body: Node) -> void:
 
 func hazard_crash() -> void:
 	print("KABLOOEY!")
-	playback.travel("SplatLand")
+	skeleton_3d.physical_bones_start_simulation()
 	explosion_audio.play(2.5)
 	explosion_particles.emitting = true
 	set_process(false)
@@ -68,7 +67,7 @@ func hazard_crash() -> void:
 
 func complete_level(next_level_file : String) -> void:
 	print("Level Complete!")
-	playback.travel("HardLand")
+	#playback.travel("HardLand")
 	success_audio.play()
 	success_particles.emitting = true
 	# I should definitely optimize this...or try at least.
