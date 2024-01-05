@@ -1,11 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cgubt6tqwcsub"]
+[gd_scene load_steps=9 format=3 uid="uid://cpxiomgpe1wcm"]
 
-[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_vw7l8"]
-[ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_kbgam"]
-[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="3_oxcsy"]
-[ext_resource type="PackedScene" uid="uid://d0fcr2t37ngk2" path="res://Static 3D Models/alien.tscn" id="4_6brgh"]
-[ext_resource type="Script" path="res://Levels/TitleScreen.gd" id="5_xido3"]
-[ext_resource type="PackedScene" uid="uid://brsb1bjfksp1" path="res://Character/character_ragdoll.tscn" id="6_gq1jy"]
+[ext_resource type="Script" path="res://Levels/TitleScreen.gd" id="1_n8y3h"]
+[ext_resource type="Script" path="res://Levels/LandingPad.gd" id="2_460em"]
+[ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="3_88xkg"]
+[ext_resource type="PackedScene" uid="uid://d0fcr2t37ngk2" path="res://Static 3D Models/alien.tscn" id="4_sdbna"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqcb"]
 albedo_color = Color(0.109804, 0.105882, 1, 1)
@@ -13,185 +11,84 @@ albedo_color = Color(0.109804, 0.105882, 1, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qubg4"]
 albedo_color = Color(0, 0.92549, 0.00392157, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_skunp"]
-font_size = 60
+[sub_resource type="LabelSettings" id="LabelSettings_vtmca"]
+font_size = 46
+outline_size = 15
+outline_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_15mvn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kqwt3"]
+[sub_resource type="Theme" id="Theme_1x068"]
+default_font_size = 25
 
 [node name="Level" type="Node3D"]
+script = ExtResource("1_n8y3h")
 
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
+layers = 3
 use_collision = true
+collision_layer = 2
+collision_mask = 0
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_plqcb")
 
 [node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
 use_collision = true
+collision_layer = 2
+collision_mask = 0
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
-script = ExtResource("1_vw7l8")
+script = ExtResource("2_460em")
 file_path = "res://Levels/Level_2.tscn"
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
-[node name="Player" parent="." instance=ExtResource("2_kbgam")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.67365, 0)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-linear_damp = 1.0
-angular_damp = 3.0
+[node name="Floor" parent="." instance=ExtResource("3_88xkg")]
+layers = 3
+collision_layer = 3
+collision_mask = 0
 
-[node name="Floor" parent="." instance=ExtResource("3_oxcsy")]
-
-[node name="Alien" parent="." instance=ExtResource("4_6brgh")]
+[node name="Alien" parent="." instance=ExtResource("4_sdbna")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.90902, 6.0336, 0.696986)
+gravity_scale = 0.855
 
-[node name="TitleScreen" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 100
-theme_override_constants/margin_bottom = 100
-script = ExtResource("5_xido3")
+theme_override_constants/margin_left = 540
+theme_override_constants/margin_top = 96
+theme_override_constants/margin_right = 96
+theme_override_constants/margin_bottom = 96
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 100
 
-[node name="Label" type="Label" parent="TitleScreen/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "HYDROGEN HALOS❄️"
-label_settings = SubResource("LabelSettings_skunp")
+text = "Hydrogen Halos ❄️"
+label_settings = SubResource("LabelSettings_vtmca")
 horizontal_alignment = 1
+uppercase = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TitleScreen/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="TitleScreen/VBoxContainer/VBoxContainer"]
+[node name="Start Button" type="MenuButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxEmpty_15mvn")
+theme = SubResource("Theme_1x068")
+toggle_mode = false
 text = "START"
 
-[node name="Button2" type="Button" parent="TitleScreen/VBoxContainer/VBoxContainer"]
+[node name="Quit Button" type="MenuButton" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxEmpty_kqwt3")
+theme = SubResource("Theme_1x068")
+toggle_mode = false
 text = "QUIT"
+switch_on_hover = true
 
-[node name="CharacterExported" parent="." instance=ExtResource("6_gq1jy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.72142, 1.82039, -0.507663)
-
-[node name="Physical Bone Hips" parent="CharacterExported/Root/Skeleton3D" index="1"]
-transform = Transform3D(0.984737, -0.0441185, -0.166863, -0.16372, 0.0672259, -0.983952, 0.0546421, 0.996502, 0.0589885, 0.00988531, 1.34697, 0.00227737)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55178e-06, -0.000462636, 0.1609)
-body_offset = Transform3D(0.999748, -1.15484e-06, -7.54604e-07, 1.74157e-07, 2.64496e-07, -0.999742, 7.56234e-07, 0.999741, -2.87592e-06, -1.43051e-06, 0.160859, 0.000462979)
-
-[node name="Physical Bone Chest" parent="CharacterExported/Root/Skeleton3D" index="2"]
-transform = Transform3D(0.999068, -0.054112, -0.00572856, 0.00691295, 0.230571, -0.974103, 0.0539892, 0.971739, 0.230839, 0.0396824, 1.93167, -0.115678)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13979e-06, -5.20615e-06, 0.152475)
-body_offset = Transform3D(1.00055, 1.48639e-06, 7.47945e-06, 1.83471e-06, 3.97861e-06, -1.0011, -5.69597e-06, 1.00018, 2.94596e-05, 0, 0.152642, 7.15256e-07)
-
-[node name="Physical Bone Neck" parent="CharacterExported/Root/Skeleton3D" index="3"]
-transform = Transform3D(0.99824, -0.0593036, -0.000521487, -0.0103089, -0.164817, -0.9863, 0.0584041, 0.984537, -0.165138, 0.0407343, 2.48569, -0.164217)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.60526e-07, -1.93885e-06, 0.13899)
-body_offset = Transform3D(1, 7.07805e-07, -1.17347e-07, -2.4084e-06, -1.20699e-06, -1.00003, 1.19209e-07, 0.999998, 4.51505e-06, 4.76837e-07, 0.138994, 1.3113e-06)
-
-[node name="Physical Bone Head" parent="CharacterExported/Root/Skeleton3D" index="4"]
-transform = Transform3D(0.997327, -0.0782041, -0.0119245, 0.000762804, 0.159143, -1.00066, 0.0790357, 0.985443, 0.160163, 0.0467319, 3.11881, -0.22086)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.11356e-06, 0.000206399, 0.495714)
-body_offset = Transform3D(1.00045, 2.81259e-05, -3.35276e-07, -2.87499e-06, 5.74887e-05, -1.01347, -1.65775e-05, 1.00127, -0.000424951, -9.53674e-07, 0.502389, 3.99351e-06)
-
-[node name="Physical Bone LeftShoulder" parent="CharacterExported/Root/Skeleton3D" index="5"]
-transform = Transform3D(-0.106549, 0.332661, -0.936994, 0.0637585, 0.942643, 0.327455, 0.99221, -0.0248507, -0.121664, 0.246529, 2.32566, -0.103754)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.45077e-07, 1.28525e-06, 0.129402)
-body_offset = Transform3D(0.99995, 4.06057e-07, 2.6077e-07, 2.44379e-06, 4.51691e-06, -0.999994, -8.17701e-07, 0.999929, -7.19214e-07, -1.78814e-07, 0.129401, -1.19209e-06)
-
-[node name="Physical Bone LeftArm" parent="CharacterExported/Root/Skeleton3D" index="6"]
-transform = Transform3D(-0.952759, -0.0468953, -0.302697, -0.300571, -0.0492836, 0.952731, -0.0595684, 0.998595, 0.0328173, 0.439022, 2.05908, -0.09571)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.8936e-06, -2.28944e-05, 0.235342)
-body_offset = Transform3D(1.00082, 7.66292e-06, -1.65459e-05, -9.53584e-05, -1.44802e-05, -1.0002, 8.04663e-07, 1.00091, -2.41771e-06, -5.00679e-06, 0.235389, 2.34842e-05)
-
-[node name="Physical Bone LeftForeArm" parent="CharacterExported/Root/Skeleton3D" index="7"]
-transform = Transform3D(-0.95385, -0.111795, -0.278767, -0.300062, 0.31335, 0.900999, -0.0134048, 0.943044, -0.332429, 0.583744, 1.59735, -0.0158359)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.17999e-07, 9.26407e-06, 0.263606)
-body_offset = Transform3D(1.00002, 2.02097e-07, -4.56814e-07, -3.26149e-06, 1.40071e-06, -1.00001, -3.00594e-05, 1.00001, -7.7486e-07, 2.38419e-07, 0.263608, -9.05991e-06)
-
-[node name="Physical Bone LeftHand" parent="CharacterExported/Root/Skeleton3D" index="8"]
-transform = Transform3D(0.426739, -0.884327, -0.189378, -0.379676, -0.365232, 0.849974, -0.820852, -0.290809, -0.491603, 0.670364, 1.30094, 0.105873)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.87838e-06, 1.06497e-05, 0.0692944)
-body_offset = Transform3D(1.00003, 2.08616e-07, -4.17233e-07, -3.69549e-06, -6.04987e-06, -0.999997, 3.7998e-06, 0.999999, -9.17912e-06, 1.90735e-06, 0.0692942, -1.00136e-05)
-
-[node name="Physical Bone RightShoulder" parent="CharacterExported/Root/Skeleton3D" index="9"]
-transform = Transform3D(0.163502, 0.497679, 0.851817, -0.284079, -0.803106, 0.523734, 0.944757, -0.327616, 0.0100593, -0.161245, 2.29905, -0.130326)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.55135e-06, -1.01773e-06, 0.129402)
-body_offset = Transform3D(1, 8.34465e-07, -2.75113e-06, 1.72202e-06, -2.91178e-06, -0.999996, -1.2815e-06, 0.999998, 1.89196e-05, 1.90735e-06, 0.129402, -1.43051e-06)
-
-[node name="Physical Bone RightArm" parent="CharacterExported/Root/Skeleton3D" index="10"]
-transform = Transform3D(0.0029523, -0.938607, 0.345033, 0.040604, 0.344863, 0.937795, -0.999297, 0.0112342, 0.0391291, -0.35272, 2.01053, -0.140843)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.148e-06, -3.40667e-05, 0.235398)
-body_offset = Transform3D(1.00013, -4.03449e-06, -2.46614e-06, 2.2538e-06, 8.2319e-06, -1.00002, 9.32626e-06, 1.00002, 9.00298e-06, 1.72853e-06, 0.235402, 3.19481e-05)
-
-[node name="Physical Bone RightForeArm" parent="CharacterExported/Root/Skeleton3D" index="11"]
-transform = Transform3D(-0.0722468, -0.954433, 0.289628, -0.422483, 0.292298, 0.858104, -0.903737, -0.0603457, -0.424266, -0.510244, 1.56361, -0.0382145)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, 6.90373e-06, -1.62265e-06, 0.263584)
-body_offset = Transform3D(1.00023, -1.12876e-06, -3.44515e-05, -5.36442e-07, -3.87058e-06, -1.00011, 1.31503e-06, 1.00001, -1.01253e-05, 2.17557e-06, 0.263614, 4.29153e-06)
-
-[node name="Physical Bone RightHand" parent="CharacterExported/Root/Skeleton3D" index="12"]
-transform = Transform3D(-0.359999, -0.898706, 0.250491, -0.407971, 0.393104, 0.82404, -0.839023, 0.194469, -0.508164, -0.603943, 1.28033, 0.108847)
-joint_offset = Transform3D(0.961739, 0.273958, 0, -0.273958, 0.961739, 0, 0, 0, 1, 2.4821e-06, -7.46308e-06, 0.0693037)
-body_offset = Transform3D(1, -7.91252e-06, 2.02656e-06, 2.6226e-06, 1.8321e-05, -1.00001, 1.57952e-06, 1.00001, 1.13621e-05, -2.6226e-06, 0.0693043, 6.67572e-06)
-
-[node name="Physical Bone LeftUpLeg" parent="CharacterExported/Root/Skeleton3D" index="13"]
-transform = Transform3D(0.96667, 0.2448, -0.0753316, 0.169566, -0.391158, 0.904558, 0.19198, -0.887142, -0.419623, 0.211137, 0.975171, 0.129274)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.77502e-06, 1.02107e-06, 0.263095)
-body_offset = Transform3D(0.99999, 2.08616e-07, -3.12179e-06, -5.76675e-06, -2.38419e-07, -0.999992, -3.72529e-07, 0.999977, -1.16229e-06, -9.53674e-07, 0.263093, -7.15256e-07)
-
-[node name="Physical Bone LeftLeg" parent="CharacterExported/Root/Skeleton3D" index="14"]
-transform = Transform3D(0.984787, 0.16057, 0.0669753, -0.130915, 0.43047, 0.893056, 0.114577, -0.888202, 0.444929, 0.21056, 0.465345, 0.10423)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47536e-06, 7.21785e-07, 0.304406)
-body_offset = Transform3D(1, 6.4075e-07, -2.77907e-06, -3.72529e-09, 8.64267e-07, -0.999995, -4.47035e-08, 0.999995, -8.04663e-07, -7.62939e-06, 0.304405, -4.76837e-07)
-
-[node name="Physical Bone LeftFoot" parent="CharacterExported/Root/Skeleton3D" index="15"]
-transform = Transform3D(0.928278, -0.114854, -0.353853, 0.128737, -0.793247, 0.595125, -0.34903, -0.597969, -0.721524, 0.24348, 0.10385, 0.0774713)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.46193e-06, 5.60135e-07, 0.150627)
-body_offset = Transform3D(0.999999, -3.01003e-06, 2.08616e-07, -5.06639e-07, 1.2517e-06, -1, 7.15256e-07, 1, 2.38419e-07, 1.43051e-06, 0.150627, -5.96046e-07)
-
-[node name="Physical Bone LeftToes" parent="CharacterExported/Root/Skeleton3D" index="16"]
-transform = Transform3D(-0.934703, 0.0133735, -0.355246, 0.000449068, 0.999331, 0.0363617, 0.355621, 0.0338333, -0.934071, 0.334646, 0.0103271, 0.285742)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97579e-06, 3.39272e-06, 0.106616)
-body_offset = Transform3D(1.00002, 1.70339e-06, -1.2219e-06, 0.000141948, 1.47894e-06, -1.00001, -9.36911e-07, 1, 6.03497e-07, 8.10623e-06, 0.106617, -3.45707e-06)
-
-[node name="Physical Bone RightUpLeg" parent="CharacterExported/Root/Skeleton3D" index="17"]
-transform = Transform3D(0.9668, -0.253322, 0.0320417, -0.0892337, -0.217675, 0.971869, -0.239302, -0.942585, -0.232967, -0.214117, 1.03592, 0.0560041)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000601088, 0.00069941, 0.250498)
-body_offset = Transform3D(0.999949, 7.34776e-05, 7.30157e-07, -3.30806e-06, 7.28816e-05, -0.999914, 1.93715e-06, 1.00001, -4.82798e-06, -0.000601292, 0.250476, -0.000698209)
-
-[node name="Physical Bone RightLeg" parent="CharacterExported/Root/Skeleton3D" index="18"]
-transform = Transform3D(0.982311, -0.153456, -0.107415, 0.149394, 0.295698, 0.943342, -0.113026, -0.942877, 0.313384, -0.18984, 0.480528, 0.0240377)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.37912e-07, 1.50836e-05, 0.304463)
-body_offset = Transform3D(0.999998, 3.05474e-07, 2.01911e-06, -2.27243e-07, -5.66244e-07, -0.999819, 1.67638e-06, 1, -5.42402e-05, -4.76837e-07, 0.304408, 1.43051e-06)
-
-[node name="Physical Bone RightFoot" parent="CharacterExported/Root/Skeleton3D" index="19"]
-transform = Transform3D(0.924276, 0.168169, 0.34273, -0.0764152, -0.798091, 0.597661, 0.374028, -0.578596, -0.724797, -0.208748, 0.103284, 0.0378174)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.63101e-06, -5.60285e-06, 0.150628)
-body_offset = Transform3D(1, 2.5332e-07, 6.25849e-07, 3.57628e-07, -3.8743e-07, -0.999992, 4.47035e-08, 0.999999, 7.12276e-06, 9.53674e-06, 0.150627, 4.52995e-06)
-
-[node name="Physical Bone RightToes" parent="CharacterExported/Root/Skeleton3D" index="20"]
-transform = Transform3D(-0.939926, -0.00449447, 0.341095, 0.00959597, 0.998704, 0.0395286, -0.341235, 0.040453, -0.938337, -0.296774, 0.00904405, 0.247117)
-joint_offset = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.84053e-06, 1.50853e-06, 0.106704)
-body_offset = Transform3D(0.999986, 1.96788e-06, -9.17912e-06, 8.07643e-06, -4.36977e-06, -0.999186, -5.67175e-07, 0.999533, -1.63652e-05, -2.86102e-06, 0.106618, 2.38419e-07)
-
-[connection signal="button_down" from="TitleScreen/VBoxContainer/VBoxContainer/Button" to="TitleScreen" method="_on_button_button_down"]
-[connection signal="button_down" from="TitleScreen/VBoxContainer/VBoxContainer/Button2" to="TitleScreen" method="_on_button_2_button_down"]
-
-[editable path="CharacterExported"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Start Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/Quit Button" to="." method="_on_quit_button_pressed"]
