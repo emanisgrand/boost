@@ -61,7 +61,7 @@ material = SubResource("StandardMaterial3D_plqcb")
 transform = Transform3D(0.986286, 0.0454933, -0.158654, 0, 0.961262, 0.275637, 0.165048, -0.271857, 0.948079, -3.52, 9.215, 8.105)
 
 [node name="Player" parent="." instance=ExtResource("3_rj77d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.27738, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.914812, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 linear_damp = 1.0

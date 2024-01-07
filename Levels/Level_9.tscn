@@ -92,7 +92,7 @@ file_path = "res://Levels/Level_10.tscn"
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
 [node name="Player" parent="." instance=ExtResource("3_l64ls")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 4.15156, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.879607, 0)
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 linear_damp = 1.0

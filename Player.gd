@@ -25,11 +25,12 @@ func _process(delta):
 		apply_central_force(basis.y * delta * thrust)
 		booster_particles.emitting = true
 		#playback.travel("Flying")
+		rocket_audio.stream_paused = false
 		if rocket_audio.playing == false:
 			rocket_audio.play()
 	else:
 		booster_particles.emitting = false
-		rocket_audio.stop()
+		rocket_audio.stream_paused = true
 	
 	if Input.is_action_pressed("rotate_left"):
 		apply_torque(Vector3(0.0, 0.0, torque * delta))
@@ -58,6 +59,7 @@ func hazard_crash() -> void:
 	skeleton_3d.physical_bones_start_simulation()
 	explosion_audio.play(2.5)
 	explosion_particles.emitting = true
+	booster_particles.emitting = false
 	set_process(false)
 	is_transitioning = true
 	# Now the tween takes over.
