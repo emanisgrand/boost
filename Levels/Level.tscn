@@ -36,7 +36,7 @@ file_path = "res://Levels/Level_2.tscn"
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
 [node name="Player" parent="." instance=ExtResource("1_lne08")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.07756, -0.0474221)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.962403, -0.0474221)
 
 [node name="Floor" parent="." instance=ExtResource("1_fiv7f")]
 layers = 3

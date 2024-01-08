@@ -45,3 +45,4 @@ linear_damp = 1.0
 angular_damp = 3.0
 
 [node name="Floor" parent="." instance=ExtResource("3_rq7aa")]
+collision_layer = 2
