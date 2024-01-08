@@ -8,16 +8,13 @@ var is_transitioning:bool = false
 @onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
 @onready var success_audio: AudioStreamPlayer = $SuccessAudio
 @onready var rocket_audio: AudioStreamPlayer3D = $RocketAudio
-@onready var animation_tree:AnimationTree = $Character/AnimationTree
+@onready var animation_tree:AnimationTree = $Racer/AnimationTree
 @onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 
-@onready var right_booster_particles: GPUParticles3D = $"Character/Root/Skeleton3D/Physical Bone RightHand/RightBoosterParticles"
-@onready var left_booster_particles: GPUParticles3D = $"Character/Root/Skeleton3D/Physical Bone LeftHand/LeftBoosterParticles"
-
-@onready var explosion_particles:GPUParticles3D = $Character/ExplosionParticles
-@onready var booster_particles:GPUParticles3D = $Character/BoosterParticles
-@onready var success_particles:GPUParticles3D = $Character/SuccessParticles
-@onready var skeleton_3d: Skeleton3D = $Character/Root/Skeleton3D
+@onready var booster_particles:GPUParticles3D = $Racer/BoosterParticles
+@onready var explosion_particles:GPUParticles3D = $Racer/ExplosionParticles
+@onready var success_particles:GPUParticles3D = $Racer/SuccessParticles
+@onready var skeleton_3d:Skeleton3D = $Racer/RacerArmature/Skeleton3D
 
 func _ready():
 	
@@ -27,26 +24,21 @@ func _process(delta):
 	if Input.is_action_pressed("boost"):
 		apply_central_force(basis.y * delta * thrust)
 		booster_particles.emitting = true
-		playback.travel("Imported_Flying")
+		playback.travel("Flying")
 		rocket_audio.stream_paused = false
 		if rocket_audio.playing == false:
 			rocket_audio.play()
 	else:
+		playback.travel("Falling")
 		booster_particles.emitting = false
 		rocket_audio.stream_paused = true
 	
 	if Input.is_action_pressed("rotate_left"):
 		apply_torque(Vector3(0.0, 0.0, torque * delta))
-		right_booster_particles.emitting = true
-	else:
-		right_booster_particles.emitting = false
 	
 	if Input.is_action_pressed("rotate_right"):
 		apply_torque(Vector3(0.0, 0.0, -torque * delta))
-		left_booster_particles.emitting = true
-	else: 
-		left_booster_particles.emitting = false
-	
+
 	if Input.is_action_pressed("ui_cancel"):
 		get_tree().quit()
 
