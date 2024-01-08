@@ -8,9 +8,8 @@ var is_transitioning:bool = false
 @onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
 @onready var success_audio: AudioStreamPlayer = $SuccessAudio
 @onready var rocket_audio: AudioStreamPlayer3D = $RocketAudio
-
-#@onready var animation_tree: AnimationTree = $AnimationTree
-#@onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+@onready var animation_tree:AnimationTree = $Character/AnimationTree
+@onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 
 @onready var right_booster_particles: GPUParticles3D = $"Character/Root/Skeleton3D/Physical Bone RightHand/RightBoosterParticles"
 @onready var left_booster_particles: GPUParticles3D = $"Character/Root/Skeleton3D/Physical Bone LeftHand/LeftBoosterParticles"
@@ -20,11 +19,15 @@ var is_transitioning:bool = false
 @onready var success_particles:GPUParticles3D = $Character/SuccessParticles
 @onready var skeleton_3d: Skeleton3D = $Character/Root/Skeleton3D
 
+func _ready():
+	
+	pass
+
 func _process(delta):
 	if Input.is_action_pressed("boost"):
 		apply_central_force(basis.y * delta * thrust)
 		booster_particles.emitting = true
-		#playback.travel("Flying")
+		playback.travel("Imported_Flying")
 		rocket_audio.stream_paused = false
 		if rocket_audio.playing == false:
 			rocket_audio.play()
