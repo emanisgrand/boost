@@ -26,13 +26,15 @@ albedo_color = Color(0, 0.92549, 0.00392157, 1)
 [node name="Obstacle1" type="CSGBox3D" parent="." groups=["Hazard"]]
 transform = Transform3D(0.106794, 0, 0, 0, 0.7, 0, 0, 0, 1, 0, 3.31716, 0)
 use_collision = true
-collision_layer = 3
+collision_layer = 7
+collision_mask = 5
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_sqooe")
 
 [node name="Obstacle2" type="AnimatableBody3D" parent="." groups=["Hazard"]]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 10.3172, 0)
-collision_layer = 3
+collision_layer = 7
+collision_mask = 5
 script = ExtResource("1_c3u8g")
 destination = Vector3(0, -4, 0)
 duration = 1.85
@@ -47,14 +49,16 @@ mesh = SubResource("BoxMesh_wo38w")
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
 use_collision = true
-collision_layer = 3
+collision_layer = 7
+collision_mask = 5
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_plqcb")
 
 [node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
 use_collision = true
-collision_layer = 3
+collision_layer = 7
+collision_mask = 5
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
 script = ExtResource("1_fgiol")
@@ -64,7 +68,8 @@ file_path = "res://Levels/Level_6.tscn"
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
 [node name="Player" parent="." instance=ExtResource("2_ep4hh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.897121, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.59676, 0)
+collision_mask = 2
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 linear_damp = 1.0
