@@ -50,3 +50,7 @@ quit={
 3d_physics/layer_1="player skeleton"
 3d_physics/layer_2="walls"
 3d_physics/layer_3="player collider"
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
