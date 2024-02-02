@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3dwlfavrkq0u"]
+
+[ext_resource type="AudioStream" uid="uid://b4nvsndo8tpmg" path="res://Audio/spacetime.mp3" id="1_jf2q6"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_jf2q6")
+autoplay = true
