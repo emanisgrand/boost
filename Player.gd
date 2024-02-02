@@ -4,20 +4,23 @@ extends RigidBody3D
 @export var torque:float = 100
 # flag state of tween
 var is_transitioning:bool = false
-
+#🩻️
+@onready var general_skeleton: Skeleton3D = $Racer/RacerArmature/GeneralSkeleton
+@onready var animation_tree:AnimationTree = $Racer/AnimationTree
+@onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+#⚛️
+@onready var explosion_particles:GPUParticles3D = $ExplosionParticles
+@onready var booster_particles:GPUParticles3D = $BoosterParticles
+@onready var success_particles:GPUParticles3D = $SuccessParticles
+#🔊️
 @onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
 @onready var success_audio: AudioStreamPlayer = $SuccessAudio
 @onready var rocket_audio: AudioStreamPlayer3D = $RocketAudio
-@onready var animation_tree:AnimationTree = $Racer/AnimationTree
-@onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
+@onready var skeleton_3d: Skeleton3D = $RacerArmature/GeneralSkeleton
 
-@onready var booster_particles:GPUParticles3D = $Racer/BoosterParticles
-@onready var explosion_particles:GPUParticles3D = $Racer/ExplosionParticles
-@onready var success_particles:GPUParticles3D = $Racer/SuccessParticles
-@onready var skeleton_3d:Skeleton3D = $Racer/RacerArmature/Skeleton3D
 
 func _ready():
-	
+	playback.travel("Idle")
 	pass
 
 func _process(delta):
@@ -32,10 +35,13 @@ func _process(delta):
 		playback.travel("Falling")
 		booster_particles.emitting = false
 		rocket_audio.stream_paused = true
+		
+	if Input.is_action_just_released("boost"):
+		playback.travel("Falling")
 	
 	if Input.is_action_pressed("rotate_left"):
 		apply_torque(Vector3(0.0, 0.0, torque * delta))
-	
+
 	if Input.is_action_pressed("rotate_right"):
 		apply_torque(Vector3(0.0, 0.0, -torque * delta))
 
@@ -51,7 +57,8 @@ func _on_body_entered(body: Node) -> void:
 
 func hazard_crash() -> void:
 	print("KABLOOEY!")
-	skeleton_3d.physical_bones_start_simulation()
+	Engine.time_scale = 0.4
+	general_skeleton.physical_bones_start_simulation()
 	explosion_audio.play(2.5)
 	explosion_particles.emitting = true
 	booster_particles.emitting = false
@@ -59,8 +66,12 @@ func hazard_crash() -> void:
 	is_transitioning = true
 	# Now the tween takes over.
 	var tween = create_tween()
-	tween.tween_interval(1.0)
+	tween.tween_interval(2.0)
+	tween.tween_callback(reset_time_scale)
 	tween.tween_callback(get_tree().reload_current_scene)
+
+func reset_time_scale() -> void:
+	Engine.time_scale = 1.0
 
 func complete_level(next_level_file : String) -> void:
 	print("Level Complete!")

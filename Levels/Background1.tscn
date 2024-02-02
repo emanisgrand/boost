@@ -1,4 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8132wmw86n7q"]
+[gd_scene load_steps=6 format=3 uid="uid://b8132wmw86n7q"]
+
+[ext_resource type="PackedScene" uid="uid://blcfwn7apwj6j" path="res://Static 3D Models/Chamber.glb" id="1_24ned"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i806"]
 albedo_color = Color(0.54902, 0.337255, 0.0235294, 1)
@@ -21,7 +23,8 @@ glow_enabled = true
 [node name="Floor" type="CSGBox3D" groups=["Hazard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 use_collision = true
-collision_mask = 3
+collision_layer = 7
+collision_mask = 5
 size = Vector3(30, 4, 4)
 material = SubResource("StandardMaterial3D_1i806")
 
@@ -34,61 +37,45 @@ shadow_enabled = true
 environment = SubResource("Environment_xim7d")
 
 [node name="L_Wall1" type="CSGBox3D" parent="."]
-transform = Transform3D(3.4637, -1.90583, 0, 0.928097, 7.11265, 0, 0, 0, 4, -15.9539, 4.45418, 0.00537109)
-material = SubResource("StandardMaterial3D_1i806")
-
-[node name="L_Wall3" type="CSGBox3D" parent="."]
-transform = Transform3D(3.4637, -1.90583, 0, 0.928097, 7.11265, 0, 0, 0, 4, -5.56285, 1.23847, -7.99463)
-material = SubResource("StandardMaterial3D_1i806")
-
-[node name="L_Wall4" type="CSGBox3D" parent="."]
-transform = Transform3D(3.4637, -1.90583, 0, 0.928097, 7.11265, 0, 0, 0, 4, -1.56285, 1.23847, -7.99463)
-material = SubResource("StandardMaterial3D_1i806")
-
-[node name="L_Wall5" type="CSGBox3D" parent="."]
-transform = Transform3D(3.4637, -1.90583, 0, 0.928097, 7.11265, 0, 0, 0, 4, 9.43715, 1.23847, -7.99463)
+transform = Transform3D(3.4637, -1.90583, 0, 0.928097, 7.11265, 0, 0, 0, 4, -16.0023, 4.37662, -0.0308266)
+visible = false
 material = SubResource("StandardMaterial3D_1i806")
 
 [node name="L_Wall2" type="CSGBox3D" parent="."]
 transform = Transform3D(2.02843, 10.8853, 0, -2.02843, 10.8853, 0, 0, 0, 4, -16, 9.03356, 0)
+visible = false
 material = SubResource("StandardMaterial3D_1i806")
 
 [node name="R_Wall2" type="CSGBox3D" parent="."]
 transform = Transform3D(-3.4637, 1.90583, -3.49691e-07, 0.928097, 7.11265, 0, 3.02807e-07, -1.66613e-07, -4, 17, 4.23356, 0)
+visible = false
 material = SubResource("StandardMaterial3D_1i806")
 
 [node name="R_Wall1" type="CSGBox3D" parent="."]
 transform = Transform3D(-3.62843, -6.08528, -3.49691e-07, -3.62843, 6.08528, 0, 3.17207e-07, 5.31992e-07, -4, 17, 9.03356, 0)
+visible = false
 material = SubResource("StandardMaterial3D_1i806")
 
 [node name="ceiling" type="CSGBox3D" parent="."]
 transform = Transform3D(2.70453, -5.41581, -2.70654e-07, -3.00527, -4.87385, 3.07079e-08, -2.64549e-07, 4.22412e-07, -3.11578, 13.0507, 13.2419, -0.00219036)
+visible = false
 material = SubResource("StandardMaterial3D_1i806")
 
 [node name="ceiling2" type="CSGBox3D" parent="."]
 transform = Transform3D(-0.890011, 12.1471, -2.7239e-07, 2.66646, 4.05445, 0, 7.78072e-08, -1.06193e-06, -3.11578, -4.35278, 15.9517, -0.00218884)
+visible = false
 material = SubResource("StandardMaterial3D_1i806")
 
 [node name="ceiling3" type="CSGBox3D" parent="."]
 transform = Transform3D(1.17802, 9.92843, -2.7239e-07, 2.4846, -4.70736, 0, -1.02986e-07, -8.67971e-07, -3.11578, 5.90019, 15.338, -0.00218974)
+visible = false
 size = Vector3(1, 0.946411, 1)
 material = SubResource("StandardMaterial3D_1i806")
 
-[node name="ceiling4" type="CSGBox3D" parent="."]
-transform = Transform3D(6.00744, 1.20214, -2.38419e-07, 0.337851, -10.158, -2.86042, -0.35504, 10.6748, -2.72195, -5.47506, 15.3594, -21.2673)
-size = Vector3(1, 0.984863, 0.998535)
-material = SubResource("StandardMaterial3D_1i806")
+[node name="Chamber" parent="." instance=ExtResource("1_24ned")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9626, 0.814475, -6.10325)
 
-[node name="ceiling7" type="CSGBox3D" parent="."]
-transform = Transform3D(8.68402, 1.46671, 0.195627, 0.863382, -10.0025, -3.04484, -0.35223, 11.6431, -2.64043, -14.7601, 11.4634, -20.9633)
-material = SubResource("StandardMaterial3D_1i806")
-
-[node name="ceiling5" type="CSGBox3D" parent="."]
-transform = Transform3D(5.73884, -5.58601, 3.82087, 1.61484, -11.7302, -5.39017, 4.01258, 12.7099, -3.29542, 21.0395, 14.9686, -23.3028)
-size = Vector3(1, 0.946411, 1)
-material = SubResource("StandardMaterial3D_1i806")
-
-[node name="ceiling6" type="CSGBox3D" parent="."]
-transform = Transform3D(7.70065, -11.2066, 0.386173, -2.17631, -17.7483, -2.17595, 3.27375, 14.5619, -2.35489, 6.71512, 10.9892, -30.9777)
-size = Vector3(1, 0.946411, 2.63586)
-material = SubResource("StandardMaterial3D_1i806")
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 6.41758)
+light_energy = 5.0
+omni_range = 50.0

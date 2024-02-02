@@ -21,14 +21,16 @@ duration = 3.615
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
 use_collision = true
-collision_layer = 3
+collision_layer = 7
+collision_mask = 5
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_plqcb")
 
 [node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
 use_collision = true
-collision_layer = 3
+collision_layer = 7
+collision_mask = 5
 size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_qubg4")
 script = ExtResource("1_0ebwi")
@@ -38,9 +40,8 @@ file_path = "res://Levels/Level_5.tscn"
 transform = Transform3D(1, 0, 0, 0, 0.978148, 0.207912, 0, -0.207912, 0.978148, 0, 5.755, 8.105)
 
 [node name="Player" parent="." instance=ExtResource("2_dqb6i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.880734, 0)
-axis_lock_angular_x = true
-axis_lock_angular_y = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.57556, 0)
+collision_mask = 2
 linear_damp = 1.0
 angular_damp = 3.0
 

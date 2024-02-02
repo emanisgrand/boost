@@ -15,6 +15,10 @@ run/main_scene="res://Levels/TitleScene.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+MusicBg="*res://Music_BG.tscn"
+
 [filesystem]
 
 import/fbx/enabled=false
@@ -49,3 +53,8 @@ quit={
 
 3d_physics/layer_1="player skeleton"
 3d_physics/layer_2="walls"
+3d_physics/layer_3="player collider"
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
