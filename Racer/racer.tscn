@@ -3248,11 +3248,11 @@ transform = Transform3D(0.736302, -0.00766796, -0.676608, 0.675518, -0.0495182, 
 shape = SubResource("CapsuleShape3D_l71g1")
 
 [node name="Physical Bone LeftFoot" type="PhysicalBone3D" parent="RacerArmature/GeneralSkeleton" index="13"]
-transform = Transform3D(-0.935261, -0.0540098, -0.349816, -0.268006, 0.75381, 0.60039, 0.231216, 0.655085, -0.719303, 0.23171, -0.883239, 0.0664621)
+transform = Transform3D(-0.935261, -0.0540098, -0.349816, -0.268006, 0.75381, 0.60039, 0.231216, 0.655085, -0.719303, 0.231706, -0.882949, 0.0664613)
 joint_type = 5
-joint_offset = Transform3D(-0.000873724, 0, 0.999994, 0, 1, 0, -0.999994, 0, -0.000873724, 0.000737205, -0.00212661, 0.0953885)
+joint_offset = Transform3D(-0.000873724, 0, 0.999994, 0, 1, 0, -0.999994, 0, -0.000873724, 0.000812129, -0.00234479, 0.0952128)
 joint_rotation = Vector3(0, 1.57167, 0)
-body_offset = Transform3D(0.963337, 0.209003, 0.168233, -3.57628e-07, 0.627038, -0.778983, -0.268295, 0.750615, 0.604251, -0.0163132, 0.0756395, -0.0558445)
+body_offset = Transform3D(0.963337, 0.209003, 0.168233, -3.57628e-07, 0.627038, -0.778983, -0.268295, 0.750615, 0.604251, -0.0163102, 0.0756394, -0.0555545)
 bone_name = "LeftFoot"
 joint_constraints/x/linear_limit_enabled = true
 joint_constraints/x/linear_limit_upper = 0.0
