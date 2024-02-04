@@ -16,8 +16,7 @@ var is_transitioning:bool = false
 @onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
 @onready var success_audio: AudioStreamPlayer = $SuccessAudio
 @onready var rocket_audio: AudioStreamPlayer3D = $RocketAudio
-@onready var skeleton_3d: Skeleton3D = $RacerArmature/GeneralSkeleton
-
+@onready var skeleton_3d = %GeneralSkeleton
 
 func _ready():
 	playback.travel("Idle")
@@ -32,7 +31,6 @@ func _process(delta):
 		if rocket_audio.playing == false:
 			rocket_audio.play()
 	else:
-		playback.travel("Falling")
 		booster_particles.emitting = false
 		rocket_audio.stream_paused = true
 		
