@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://fv0ro0fpl1x0"]
+[gd_scene load_steps=8 format=3 uid="uid://fv0ro0fpl1x0"]
 
 [ext_resource type="Script" path="res://Levels/LandingPad.gd" id="1_0ebwi"]
 [ext_resource type="PackedScene" uid="uid://5jj5eaf8fup4" path="res://player.tscn" id="2_dqb6i"]
 [ext_resource type="PackedScene" uid="uid://b8132wmw86n7q" path="res://Levels/Background1.tscn" id="3_rq7aa"]
-[ext_resource type="PackedScene" uid="uid://8we3uexo4fvp" path="res://Levels/~Hazard/moving_hazard.tscn" id="4_nra85"]
+[ext_resource type="PackedScene" uid="uid://cdkiq0w5rjj8h" path="res://arm_1.tscn" id="5_365wl"]
+[ext_resource type="Script" path="res://arm_1.gd" id="6_ipt0o"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_plqcb"]
 albedo_color = Color(0.109804, 0.105882, 1, 1)
@@ -12,11 +13,6 @@ albedo_color = Color(0.109804, 0.105882, 1, 1)
 albedo_color = Color(0, 0.92549, 0.00392157, 1)
 
 [node name="Level" type="Node3D"]
-
-[node name="MovingHazard" parent="." instance=ExtResource("4_nra85")]
-collision_layer = 3
-destination = Vector3(0, 2.985, 0)
-duration = 3.615
 
 [node name="LaunchPad" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.5, 0)
@@ -46,3 +42,12 @@ linear_damp = 1.0
 angular_damp = 3.0
 
 [node name="Floor" parent="." instance=ExtResource("3_rq7aa")]
+
+[node name="Arm1" parent="." groups=["Hazard"] instance=ExtResource("5_365wl")]
+transform = Transform3D(0.00684159, 0, 0.999977, 0, 1, 0, -0.999977, 0, 0.00684158, -0.667063, 1.16265, -5.49032)
+collision_layer = 7
+collision_mask = 6
+mass = 1000.0
+freeze = true
+freeze_mode = 1
+script = ExtResource("6_ipt0o")
