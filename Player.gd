@@ -52,6 +52,8 @@ func _on_body_entered(body: Node) -> void:
 			complete_level(body.file_path)
 		if "Hazard" in body.get_groups():
 			hazard_crash()
+		if "Arm" in body.get_groups():
+			print("Collision with Arm detected.")
 
 func hazard_crash() -> void:
 	print("KABLOOEY!")

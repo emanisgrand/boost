@@ -17,7 +17,7 @@ sky = SubResource("Sky_duiuk")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Floor" type="Node3D" groups=["Hazard"]]
+[node name="Lab" type="Node3D" groups=["Hazard"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
