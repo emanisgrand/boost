@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg004wgtni6g8"]
+[gd_scene load_steps=10 format=3 uid="uid://dxba1jrwpda2k"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dj8d"]
 resource_name = "Material.002"
@@ -105,7 +105,7 @@ shadow_mesh = SubResource("ArrayMesh_uh3t8")
 size = Vector3(0.4883, 12.5282, 5.66187)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xtk6d"]
-size = Vector3(24.3525, 1, 8.07837)
+size = Vector3(24.3525, 1, 18.4659)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_igu42"]
 size = Vector3(1, 13.1261, 6.1792)
@@ -123,18 +123,18 @@ transform = Transform3D(2.69727, 0, 0, 0, 0, -1.47793, 0, 2.2845, 0, 8.88636, 7.
 mesh = SubResource("ArrayMesh_lv15g")
 skeleton = NodePath("")
 
-[node name="WestWall" type="CollisionShape3D" parent="." groups=["Hazard"]]
+[node name="WestWall" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.39794, 7.28034, 6.69788)
 shape = SubResource("BoxShape3D_mlwcx")
 
-[node name="Floor" type="CollisionShape3D" parent="." groups=["Hazard"]]
-transform = Transform3D(0.999999, -1.05622e-06, 0.00132645, 1.05622e-06, 1, 7.11924e-10, -0.00132645, 7.11924e-10, 0.999999, 9.12939, 0.799336, 5.46604)
+[node name="Floor" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999999, -1.05622e-06, 0.00132645, 1.05622e-06, 1, 7.11924e-10, -0.00132645, 7.11924e-10, 0.999999, 9.1225, 0.799336, 0.272259)
 shape = SubResource("BoxShape3D_xtk6d")
 
-[node name="EastWall" type="CollisionShape3D" parent="." groups=["Hazard"]]
+[node name="EastWall" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.5309, 6.95675, 6.45289)
 shape = SubResource("BoxShape3D_igu42")
 
-[node name="Ceiling" type="CollisionShape3D" parent="." groups=["Hazard"]]
+[node name="Ceiling" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.81528, 13.8088, 4.50873)
 shape = SubResource("BoxShape3D_hi7ul")

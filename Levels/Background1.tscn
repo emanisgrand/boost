@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b8132wmw86n7q"]
 
-[ext_resource type="PackedScene" uid="uid://dg004wgtni6g8" path="res://chamber.tscn" id="1_q6onh"]
+[ext_resource type="PackedScene" uid="uid://dxba1jrwpda2k" path="res://chamber.tscn" id="1_q6onh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4dcs1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -33,6 +33,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 6.41758)
 light_energy = 5.0
 omni_range = 50.0
 
-[node name="Chamber2" parent="." instance=ExtResource("1_q6onh")]
+[node name="Chamber2" parent="." groups=["Hazard"] instance=ExtResource("1_q6onh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.9462, 0.921754, -6.63726)
 collision_mask = 6

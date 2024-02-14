@@ -32,7 +32,7 @@ size = Vector3(2, 0.2, 2)
 material = SubResource("StandardMaterial3D_plqcb")
 
 [node name="LandingPad" type="CSGBox3D" parent="." groups=["Goal"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.913062, 0)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
