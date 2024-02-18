@@ -1,14 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3dwlfavrkq0u"]
+[gd_scene load_steps=7 format=3 uid="uid://d3dwlfavrkq0u"]
 
 [ext_resource type="Script" path="res://music_controller.gd" id="1_1v3hn"]
-[ext_resource type="AudioStream" uid="uid://b4nvsndo8tpmg" path="res://Audio/spacetime.mp3" id="1_jf2q6"]
+[ext_resource type="AudioStream" uid="uid://h605pwfpr0yl" path="res://Audio/Spacetime_2_Stems/Arp1.mp3" id="2_4r47w"]
+[ext_resource type="AudioStream" uid="uid://cq3ylqcii85ab" path="res://Audio/Spacetime_2_Stems/Bass.mp3" id="3_neogm"]
+[ext_resource type="AudioStream" uid="uid://w6jgi8crnr8a" path="res://Audio/Spacetime_2_Stems/H.H..mp3" id="4_5esf3"]
+[ext_resource type="AudioStream" uid="uid://c0w5os1toph34" path="res://Audio/Spacetime_2_Stems/Kick.mp3" id="5_wtnjl"]
+[ext_resource type="AudioStream" uid="uid://coyu5s5x22v24" path="res://Audio/Spacetime_2_Stems/Shaker.mp3" id="6_kexoo"]
 
 [node name="MusicController" type="Node"]
 script = ExtResource("1_1v3hn")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("1_jf2q6")
-volume_db = -80.0
+[node name="Arp1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4r47w")
 autoplay = true
 
-[node name="Arp" type="AudioStreamPlayer" parent="."]
+[node name="Bass" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_neogm")
+autoplay = true
+
+[node name="HH" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_5esf3")
+autoplay = true
+
+[node name="Kick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_wtnjl")
+autoplay = true
+
+[node name="Shaker" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_kexoo")
