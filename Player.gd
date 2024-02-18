@@ -9,9 +9,9 @@ var is_transitioning:bool = false
 @onready var animation_tree:AnimationTree = $Racer/AnimationTree
 @onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 #⚛️
-@onready var explosion_particles:GPUParticles3D = $ExplosionParticles
-@onready var booster_particles:GPUParticles3D = $BoosterParticles
-@onready var success_particles:GPUParticles3D = $SuccessParticles
+#@onready var explosion_particles:GPUParticles3D = $ExplosionParticles
+#@onready var booster_particles:GPUParticles3D = $BoosterParticles
+#@onready var success_particles:GPUParticles3D = $SuccessParticles
 #🔊️
 @onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
 @onready var success_audio: AudioStreamPlayer = $SuccessAudio
@@ -25,13 +25,13 @@ func _ready():
 func _process(delta):
 	if Input.is_action_pressed("boost"):
 		apply_central_force(basis.y * delta * thrust)
-		booster_particles.emitting = true
+#		booster_particles.emitting = true
 		playback.travel("Flying")
 		rocket_audio.stream_paused = false
 		if rocket_audio.playing == false:
 			rocket_audio.play()
 	else:
-		booster_particles.emitting = false
+#		booster_particles.emitting = false
 		rocket_audio.stream_paused = true
 		
 	if Input.is_action_just_released("boost"):
@@ -60,8 +60,8 @@ func hazard_crash() -> void:
 	Engine.time_scale = 0.4
 	general_skeleton.physical_bones_start_simulation()
 	explosion_audio.play(2.5)
-	explosion_particles.emitting = true
-	booster_particles.emitting = false
+#	explosion_particles.emitting = true
+#	booster_particles.emitting = false
 	set_process(false)
 	is_transitioning = true
 	# Now the tween takes over.
@@ -77,7 +77,7 @@ func complete_level(next_level_file : String) -> void:
 	print("Level Complete!")
 	#playback.travel("HardLand")
 	success_audio.play()
-	success_particles.emitting = true
+#	success_particles.emitting = true
 	# I should definitely optimize this...or try at least.
 	var tween = create_tween()
 	set_process(false)
