@@ -23,6 +23,8 @@ func _ready():
 	pass
 
 func _process(delta):
+	var current_state = playback.get_current_node()
+	
 	if Input.is_action_pressed("boost"):
 		apply_central_force(basis.y * delta * thrust)
 #		booster_particles.emitting = true

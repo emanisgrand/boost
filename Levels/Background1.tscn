@@ -1,6 +1,6 @@
 [gd_scene load_steps=51 format=3 uid="uid://b8132wmw86n7q"]
 
-[ext_resource type="PackedScene" uid="uid://dg004wgtni6g8" path="res://chamber.tscn" id="1_q6onh"]
+[ext_resource type="PackedScene" uid="uid://dxba1jrwpda2k" path="res://Levels/chamber.tscn" id="1_q6onh"]
 [ext_resource type="PackedScene" uid="uid://d1omm80fcwf5f" path="res://Imports/IBM.glb" id="2_1hoel"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_4dcs1"]

@@ -78,10 +78,6 @@ stream = ExtResource("4_8q4ro")
 pitch_scale = 1.28
 autoplay = true
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520527, 0.699435, 0.404463)
-omni_range = 0.626853
-
 [node name="Racer" parent="." instance=ExtResource("5_8fpem")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Racer"]

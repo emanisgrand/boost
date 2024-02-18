@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://de2h7frmfhmys"]
 
-[ext_resource type="Script" path="res://arm_1.gd" id="1_cjsf1"]
+[ext_resource type="Script" path="res://Levels/arm_1.gd" id="1_cjsf1"]
 [ext_resource type="Texture2D" uid="uid://c0fopedge7wc4" path="res://Imports/Arm1_albedo.png" id="1_rgmwq"]
 [ext_resource type="Texture2D" uid="uid://bydxufvxnsens" path="res://Imports/Arm1_emission.png" id="2_08d0d"]
 [ext_resource type="Texture2D" uid="uid://bgrrck5iirpmn" path="res://Imports/Arm1_ao.png" id="3_cs54d"]
