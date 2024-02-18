@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://5jj5eaf8fup4"]
+[gd_scene load_steps=14 format=3 uid="uid://5jj5eaf8fup4"]
 
 [ext_resource type="Script" path="res://Player.gd" id="1_xx6mv"]
 [ext_resource type="AudioStream" uid="uid://dv12ksxj60e1j" path="res://Audio/SFX - Death Explosion.ogg" id="2_7tqw6"]
@@ -10,44 +10,45 @@
 height = 2.04312
 radius = 0.267493
 
-[sub_resource type="Curve" id="Curve_rtorv"]
-max_value = 3.0
-_data = [Vector2(0, 0), 0.0, 1.25275, 0, 1, Vector2(1, 1.25275), 1.25275, 0.0, 1, 0]
+[sub_resource type="Curve" id="Curve_jwret"]
+_data = [Vector2(0.0348837, 0.0879121), 0.0, 0.23911, 0, 1, Vector2(1, 0.318681), 0.378022, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_x2cqy"]
-curve = SubResource("Curve_rtorv")
+[sub_resource type="CurveTexture" id="CurveTexture_vksve"]
+curve = SubResource("Curve_jwret")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gda7o"]
-scale_over_velocity_curve = SubResource("CurveTexture_x2cqy")
+velocity_pivot = Vector3(0, 0, -2.585)
+scale_min = 0.55
+scale_curve = SubResource("CurveTexture_vksve")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 0.0
 
-[sub_resource type="Gradient" id="Gradient_ac2ke"]
+[sub_resource type="Gradient" id="Gradient_2m22w"]
+colors = PackedColorArray(0, 0, 0, 0.490196, 1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_2ny8a"]
-gradient = SubResource("Gradient_ac2ke")
+gradient = SubResource("Gradient_2m22w")
+width = 154
+height = 99
+use_hdr = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_367wi"]
 transparency = 1
 albedo_color = Color(0.611765, 0.854902, 0.996078, 1)
 albedo_texture = SubResource("GradientTexture2D_2ny8a")
 albedo_texture_msdf = true
+rim_enabled = true
+rim = 0.25
 
 [sub_resource type="TorusMesh" id="TorusMesh_yu6px"]
 lightmap_size_hint = Vector2i(24, 3)
 material = SubResource("StandardMaterial3D_367wi")
-inner_radius = 0.724
+inner_radius = 0.699
 outer_radius = 0.606
 rings = 14
 ring_segments = 12
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4e05u"]
-
-[sub_resource type="TorusMesh" id="TorusMesh_3ooyx"]
-material = SubResource("StandardMaterial3D_4e05u")
-inner_radius = 0.83
-outer_radius = 0.97
-rings = 14
-ring_segments = 3
 
 [node name="Player" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -78,20 +79,33 @@ pitch_scale = 1.28
 autoplay = true
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699435, 0.404463)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0520527, 0.699435, 0.404463)
 omni_range = 0.626853
 
 [node name="Racer" parent="." instance=ExtResource("5_8fpem")]
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Racer"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.504747, -0.118623)
-emitting = false
-amount = 5
+transform = Transform3D(0.895751, 0, -0.444557, 0, 1, 0, 0.444557, 0, 0.895751, -0.239727, 0.408126, -0.337613)
+amount = 30
 lifetime = 0.5
-speed_scale = 0.8
+interp_to_end = 0.02
+speed_scale = 1.15
+visibility_aabb = AABB(-2.74935, -4, -2.25912, 5.4987, 8, 4.51825)
 process_material = SubResource("ParticleProcessMaterial_gda7o")
 draw_passes = 2
 draw_pass_1 = SubResource("TorusMesh_yu6px")
-draw_pass_2 = SubResource("TorusMesh_3ooyx")
+draw_pass_2 = null
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="Racer"]
+transform = Transform3D(0.895751, 0, -0.444557, 0, 1, 0, 0.444557, 0, 0.895751, 0.252754, 0.399303, -0.337613)
+amount = 30
+lifetime = 0.5
+interp_to_end = 0.02
+speed_scale = 1.15
+visibility_aabb = AABB(-2.74935, -4, -2.25912, 5.4987, 8, 4.51825)
+process_material = SubResource("ParticleProcessMaterial_gda7o")
+draw_passes = 2
+draw_pass_1 = SubResource("TorusMesh_yu6px")
+draw_pass_2 = null
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
