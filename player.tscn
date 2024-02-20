@@ -80,7 +80,7 @@ autoplay = true
 
 [node name="Racer" parent="." instance=ExtResource("5_8fpem")]
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Racer"]
+[node name="LeftBoosterParticles" type="GPUParticles3D" parent="Racer"]
 transform = Transform3D(0.895751, 0, -0.444557, 0, 1, 0, 0.444557, 0, 0.895751, -0.239727, 0.408126, -0.337613)
 amount = 30
 lifetime = 0.5
@@ -92,7 +92,7 @@ draw_passes = 2
 draw_pass_1 = SubResource("TorusMesh_yu6px")
 draw_pass_2 = null
 
-[node name="GPUParticles3D2" type="GPUParticles3D" parent="Racer"]
+[node name="RightBoosterParticles" type="GPUParticles3D" parent="Racer"]
 transform = Transform3D(0.895751, 0, -0.444557, 0, 1, 0, 0.444557, 0, 0.895751, 0.252754, 0.399303, -0.337613)
 amount = 30
 lifetime = 0.5

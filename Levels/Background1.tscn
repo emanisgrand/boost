@@ -1208,9 +1208,12 @@ shadow_mesh = SubResource("ArrayMesh_t6bnd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.00414385, -0.839057, 0.544028, 0.369675, 0.506778, 0.778791, -0.929152, 0.197886, 0.312279, 36.0024, 3.12918, 11.6739)
-light_energy = 0.0
-shadow_enabled = true
+transform = Transform3D(-0.106628, -0.99227, -0.06349, -0.0431517, -0.0591758, 0.997314, -0.993362, 0.109081, -0.0365084, 2.94349, 16.5516, -4.24519)
+light_color = Color(0.454902, 0.705882, 0.956863, 1)
+light_energy = 0.07
+light_indirect_energy = 4.74
+light_volumetric_fog_energy = 10.0
+light_angular_distance = 44.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_xim7d")
@@ -1379,23 +1382,9 @@ light_energy = 1.898
 spot_range = 14.4668
 spot_angle = 89.99
 
-[node name="SpotLight3D3" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.410592, 0.911819, 0, -0.911819, 0.410592, -8.59986, 11.1812, 4.55149)
-light_color = Color(0.929412, 0.941176, 0.945098, 1)
-light_energy = 3.593
-spot_range = 15.2823
-spot_angle = 16.85
-
-[node name="SpotLight3D4" type="SpotLight3D" parent="."]
-transform = Transform3D(0.991072, -0.109438, 0.0761576, 0, 0.571201, 0.82081, -0.133329, -0.813482, 0.566101, 11.0167, 8.13868, 5.1887)
-light_color = Color(0.929412, 0.941176, 0.945098, 1)
-light_energy = 3.593
-spot_range = 14.5092
-spot_angle = 22.0657
-
 [node name="SpotLight3D2" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.514185, 0.857679, 0, -0.857679, 0.514185, 0, 14, -7.14003)
+transform = Transform3D(0.996507, 0.0716196, -0.0429365, 0.0262639, 0.219273, 0.97531, 0.0792661, -0.973031, 0.216626, 0, 14, -7.14003)
 light_color = Color(0.929412, 0.941176, 0.945098, 1)
 light_energy = 1.303
-spot_range = 23.9025
-spot_angle = 68.5283
+spot_range = 15.0267
+spot_angle = 76.3975

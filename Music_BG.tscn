@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3dwlfavrkq0u"]
+[gd_scene load_steps=12 format=3 uid="uid://d3dwlfavrkq0u"]
 
 [ext_resource type="Script" path="res://music_controller.gd" id="1_1v3hn"]
 [ext_resource type="AudioStream" uid="uid://h605pwfpr0yl" path="res://Audio/Spacetime_2_Stems/Arp1.mp3" id="2_4r47w"]
@@ -6,6 +6,11 @@
 [ext_resource type="AudioStream" uid="uid://w6jgi8crnr8a" path="res://Audio/Spacetime_2_Stems/H.H..mp3" id="4_5esf3"]
 [ext_resource type="AudioStream" uid="uid://c0w5os1toph34" path="res://Audio/Spacetime_2_Stems/Kick.mp3" id="5_wtnjl"]
 [ext_resource type="AudioStream" uid="uid://coyu5s5x22v24" path="res://Audio/Spacetime_2_Stems/Shaker.mp3" id="6_kexoo"]
+[ext_resource type="AudioStream" uid="uid://bwhw1jy2487ld" path="res://Audio/Spacetime_2_Stems/aux_perc.mp3" id="7_ady7c"]
+[ext_resource type="AudioStream" uid="uid://c646gmijefvt1" path="res://Audio/Spacetime_2_Stems/horns2.mp3" id="8_0q4rd"]
+[ext_resource type="AudioStream" uid="uid://dggb1j2yts8hh" path="res://Audio/Spacetime_2_Stems/Horns.mp3" id="9_ybknm"]
+[ext_resource type="AudioStream" uid="uid://kphobev6ele7" path="res://Audio/Spacetime_2_Stems/melody.mp3" id="10_um4s8"]
+[ext_resource type="AudioStream" uid="uid://b0apo7ok7wrr0" path="res://Audio/Spacetime_2_Stems/snare.mp3" id="11_iidbu"]
 
 [node name="MusicController" type="Node"]
 script = ExtResource("1_1v3hn")
@@ -28,3 +33,23 @@ autoplay = true
 
 [node name="Shaker" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_kexoo")
+
+[node name="AuxPerc" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ady7c")
+autoplay = true
+
+[node name="Horns2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_0q4rd")
+autoplay = true
+
+[node name="Horns1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_ybknm")
+autoplay = true
+
+[node name="Melody" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_um4s8")
+autoplay = true
+
+[node name="Snare" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_iidbu")
+autoplay = true

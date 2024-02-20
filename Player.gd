@@ -9,6 +9,9 @@ var is_transitioning:bool = false
 @onready var animation_tree:AnimationTree = $Racer/AnimationTree
 @onready var playback:AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 #⚛️
+@onready var left_booster_particles: GPUParticles3D = $Racer/LeftBoosterParticles
+@onready var right_booster_particles: GPUParticles3D = $Racer/RightBoosterParticles
+
 #@onready var explosion_particles:GPUParticles3D = $ExplosionParticles
 #@onready var booster_particles:GPUParticles3D = $BoosterParticles
 #@onready var success_particles:GPUParticles3D = $SuccessParticles
@@ -27,13 +30,16 @@ func _process(delta):
 	
 	if Input.is_action_pressed("boost"):
 		apply_central_force(basis.y * delta * thrust)
-#		booster_particles.emitting = true
+		left_booster_particles.emitting = true
+		right_booster_particles.emitting = true
 		playback.travel("Flying")
 		rocket_audio.stream_paused = false
 		if rocket_audio.playing == false:
 			rocket_audio.play()
 	else:
 #		booster_particles.emitting = false
+		left_booster_particles.emitting = false
+		right_booster_particles.emitting = false
 		rocket_audio.stream_paused = true
 		
 	if Input.is_action_just_released("boost"):
